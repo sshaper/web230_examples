@@ -1,0 +1,18 @@
+<main>
+	<h2>Add Administrators</h2>
+	<p>Enter Admin Username and Password and click 'Add Administrator'</p>
+	<p class="error">{{error}}</p>
+	<form action="/admin/addAdmin/" method="post">
+	  <div class="form-group">
+	    <label for="username">Username</label>
+	    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+	  </div>
+	  <div class="form-group">
+	    <label for="password">Password</label>
+	    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+	  </div>
+	  <div class="form-group">
+	    <button type="submit" class="btn btn-default">Add Administrator</button>
+	  </div>
+	</div>
+</main>

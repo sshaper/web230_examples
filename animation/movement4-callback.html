@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Movement 4 Example with callback</title>
+		<style type="text/css">
+		#box1{width: 50px; height: 50px; background-color: aqua; position: absolute;}
+		#box2{width: 50px; height: 50px; background-color: aqua; position: absolute; top: 100px;}
+		#box3{width: 50px; height: 50px; background-color: aqua; position: absolute; top: 200px;}
+		#box4{width: 50px; height: 50px; background-color: aqua; position: absolute; top: 300px;}
+		#box5{width: 50px; height: 50px; background-color: aqua; position: absolute; top: 400px;}
+		</style>
+	</head>
+	<body>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3"></div>
+		<div id="box4"></div>
+		<div id="box5"></div>
+	
+	<script type="text/javascript" src="../core/animate.js"></script>
+	<script type="text/javascript">
+	/*
+	When doing multiple animations simultanously, you would think to put them in a loop.
+	But that would not work because the loop would run completely before the animation could
+	run.  The code below uses an if statement and recursive function to accomplish this effect
+	The animation class does the animation for each box, but the setTimeout allows each animation
+	to be run every quarter second.  Each animation goes the same distance and the same speed.
+	*/
+
+	var i=1;
+	moveDiv();
+	function moveDiv(){
+		if (i<6){
+			var div = new Animate(document.getElementById('box'+i));
+			
+			//The following sets the callback to the last element.
+			//this way I have a callback once all animations are done.
+			//As you can see callbacks can be assigned to each animation independently
+			if (i!==5){
+				div.animate2D(700,90,20,40);	
+			}
+			else{
+				div.animate2D(700,90,20,40,true);
+			}
+			
+			i++;
+			setTimeout(function(){moveDiv();},250);
+		}
+	}
+	
+	function callback(ele){
+		alert("All boxes are done with their animations");
+	}
+	
+
+	</script>
+	</body>
+</html>

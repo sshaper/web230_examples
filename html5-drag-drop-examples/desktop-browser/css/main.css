@@ -1,0 +1,4 @@
+main{width: 1100px; margin: 0 auto; position: relative;}
+#dropbox {width: 425px;	height: 300px; border: 2px solid #DDD; border-radius: 8px; background-color: #FEFFEC; text-align: center; color: #BBB; font-size: 2em; float: right;}
+#image{width: 600px; height: 450px; float: left; border: 2px solid blue; position: relative;}
+#image span{position: absolute; top: 200px; left: 35%}

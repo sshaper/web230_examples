@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Ajax Example 5</title>
+	
+<!--below is a script which allows IE 8 to understand HTML 5 elements.-->
+<!--[if lt IE 9]>
+	<script>
+		var elementsArray = ['abbr', 'article', 'aside', 'audio', 'bdi', 'canvas', 'data', 'datalist', 'details', 'figcaption', 'figure', 'footer', 'header', 'main', 'mark', 'meter', 'nav', 'output', 'progress', 'section', 'summary', 'template', 'time', 'video'];
+		var len = elementsArray.length;
+		for(i = 0; i < len; i++){
+			document.createElement(elementsArray[i]);
+		}
+	</script>
+<![endif]-->
+</head>
+	<body>
+	<p>ASYNC file upload</p>
+	<p>Need to install multer (npm install multer)</p>
+
+	<form id="uploadFile" enctype="multipart/form-data" action="/ajax5" method="post" >
+		<label>File Name:<input type="text" size="25" id="fileName" /></label>
+		<input type="file" id="file" accept='application/pdf'/>
+		<input type="submit" id="submitBtn">
+	</form>
+
+
+	<!-- <p><input type="text" id="fileName" ></p>
+	<p><input type="file" id="file" /></p>
+	<p><input type="button" id="submitBtn" value="submit file" /></p>
+	<p><input type="button" id="clearBtn" value="clear files in directory" /></p> -->
+	<div id="response"></div>
+	<script type="text/javascript" src="js/Ajax.js"></script>
+	<script type="text/javascript">
+		var form = document.getElementById('uploadFile');
+		form.addEventListener('submit', sendUploadRequest, false);
+		//var subBtn = document.getElementById('submitBtn');
+		//var clrBtn = document.getElementById('clearBtn');
+		var response = document.getElementById('response');
+	
+		
+		function sendUploadRequest(e){
+			e.preventDefault();
+			var file = document.getElementById('file');
+			var fileName = document.getElementById('fileName').value;
+			
+
+			var formData = new FormData();
+			console.log(file.files[0]);	
+	    	formData.append('file', file.files[0]);
+	    	formData.append('data', fileName);
+		    
+		    //clear the values
+		    file.value = '';
+		    fileName.value = '';
+
+			Ajax.sendRequest('/ajax5',handleRequest,formData,true);
+		}
+				
+		function sendClearRequest(){
+			data = 'clear';
+			Ajax.sendRequest('/ajax5clear',handleRequest,data);
+		}
+
+
+		function handleRequest(req){
+			response.innerHTML = req.responseText;
+		}
+	</script>
+	</body>
+</html>

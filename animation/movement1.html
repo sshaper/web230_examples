@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Movement 1 example</title>
+		<style type="text/css">
+		#box{width: 150px; height: 150px; background-color: aqua; position: absolute;}
+		</style>
+	</head>
+	<body>
+	
+		<p>Hold the button down to move the box then release to stop movement.</p>
+		<p><input class="hide" type="button" id="left" value="Move Left" />
+		<input class="hide" type="button" id="right" value="Move Right" />
+		<input class="hide" type="button" id="up" value="Move Up" />
+		<input class="hide" type="button" id="down" value="Move Down" /> </p>
+		<div id="box"></div>
+	
+	<script type="text/javascript" src="../core/core-event-listeners.js"></script>
+	<script type="text/javascript">
+			
+	//set some global variables
+	var box = document.getElementById('box');
+	var left = document.getElementById('left');
+	var right = document.getElementById('right');
+	var up = document.getElementById('up');
+	var down = document.getElementById('down');
+	var toggle = 0;
+	//this gets the top and left position of the box
+	//relative to the body.
+	var posY=box.offsetTop;
+	var posX=box.offsetLeft;
+	var move;
+	
+	
+	
+	//create the event listeners
+	Core.addEventListener(left,"mousedown",moveLeft);
+	Core.addEventListener(left,"mouseup",stopMove);
+	
+	Core.addEventListener(right,"mousedown",moveRight);
+	Core.addEventListener(right,"mouseup",stopMove);
+	
+	Core.addEventListener(up,"mousedown",moveUp);
+	Core.addEventListener(up,"mouseup",stopMove);
+	
+	Core.addEventListener(down,"mousedown",moveDown);
+	Core.addEventListener(down,"mouseup",stopMove);
+
+	/*
+	move left first sets the left position which is the same position
+	it loaded with or was last stopped with.
+	it then decrements that position by one pixel
+	it then calls setTimout which recursively calls upon itself for the
+	time interval set. It also sets setTimeout to a variable so that it
+	can be cancelled.
+	
+	The rest of the functions do the same but may decrement or increment based
+	upon how it is moving.
+	*/
+	function moveLeft(){
+		box.style.left = posX+"px";
+		posX--;
+		move = setTimeout(function(){moveLeft()},50);
+	}
+	
+	function moveRight(){
+		box.style.left = posX+"px";
+		posX++;
+		move = setTimeout(function(){moveRight()},50);
+	}
+
+	function moveUp(){
+		box.style.top = posY+"px";
+		posY--;
+		move = setTimeout(function(){moveUp()},50);
+	}
+	
+	function moveDown(){
+		box.style.top = posY+"px";
+		posY++;
+		move = setTimeout(function(){moveDown()},50);
+	}
+	
+	//on mouse up I called the stopMove which cleared the interval
+	function stopMove(){
+		clearInterval(move);
+	}
+
+	
+	
+	</script>
+	</body>
+</html>

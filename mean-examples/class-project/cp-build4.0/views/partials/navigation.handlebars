@@ -1,0 +1,22 @@
+<nav>
+	{{#if nav}}
+		<ul>
+			<li><a href="/user/">Home</a></li>
+			<li><a href="/user/names">Name List</a></li>
+			<li><a href="/user/diff">Different Nav</a></li>
+		</ul>
+	{{else if diff}}
+		<ul>
+			<li><a href="/user/">Home</a></li>
+			<li><a href="/user/names">Name List</a></li>
+			<li><a href="#">Blank Nav</a></li>
+			<li><a href="#">Blank Nav</a></li>
+			<li><a href="#">Blank Nav</a></li>
+		</ul>
+	{{else if admin}}
+		<ul>
+			<li><a href="/admin/">Admin Home</a></li>
+			<li><a href="/admin/logout/">Logout</a></li>
+		</ul>
+	{{/if}}
+</nav>

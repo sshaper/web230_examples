@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Movement 3 Example</title>
+		<style type="text/css">
+		#box1{width: 50px; height: 50px; background-color: aqua; position: absolute;top: 0px;}
+		#box2{width: 50px; height: 50px; background-color: aqua; position: absolute; top: 350px;left:350px}
+		#box3{width: 50px; height: 50px; position: absolute; top: 350px;left: 0px; background-color: aqua;}
+		#box4{width: 50px; height: 50px; position: absolute; top: 0px;left: 350px; background-color: aqua;}
+		#boundry{margin: 0 auto; width:400px; height: 400px;border: 1px solid #000;position: relative;}
+		</style>
+	</head>
+	<body>
+		<div id="boundry">
+			<div id="box1"></div>
+			<div id="box2"></div>
+			<div id="box3"></div>
+			<div id="box4"></div>
+		</div>
+	
+	
+	<script type="text/javascript" src="../core/animate.js"></script>
+	<script type="text/javascript">
+			
+	
+	var box1 = new Animate(document.getElementById('box1'));
+	var box2 = new Animate(document.getElementById('box2'));
+	var box3 = new Animate(document.getElementById('box3'));
+	var box4 = new Animate(document.getElementById('box4'));
+	
+	//because we want to use a boundry we need to set callback to false.
+	box1.animate2D(700,90,20,40,false,document.getElementById('boundry'));
+	box2.animate2D(700,270,20,40,false,document.getElementById('boundry'));
+	box3.animate2D(700,0,20,40,false,document.getElementById('boundry'));
+	box4.animate2D(700,180,20,40,false,document.getElementById('boundry'));
+	
+	
+	
+	</script>
+	</body>
+</html>

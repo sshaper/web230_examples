@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Location Properties and Events</title>
+	</head>
+	<body>
+	<input type="button" id="protocal" value="Get Protocal" />
+	<input type="button" id="host" value="Get Host" />
+	<input type="button" id="port" value="Get Port" />
+	<input type="button" id="pathname" value="Get Pathname" />
+	<input type="button" id="href" value="Get href" />
+	<input type="button" id="hostname" value="Get Hostname" />
+	<input type="button" id="reload" value="Reload Page" />
+	<input type="button" id="replace" value="Replace back with URL to Google" />
+	<input type="button" id="redirect" value="Redirect to Google" />
+	</body>
+	<script type="text/javascript">
+	document.getElementById('redirect').onclick = function(){location='http://www.google.com';};
+	
+	document.getElementById('protocal').onclick=function(){alert(location.protocol);}
+	document.getElementById('host').onclick=function(){alert(location.host);}
+	document.getElementById('port').onclick=function(){alert(location.port);}
+	document.getElementById('pathname').onclick=function(){alert(location.pathname);}
+	document.getElementById('href').onclick=function(){alert(location.href);}
+	document.getElementById('hostname').onclick=function(){alert(location.hostname);}
+	document.getElementById('replace').onclick=function(){location.replace('http://www.google.com');}
+
+	document.getElementById('reload').onclick=function(){alert(location.reload());}
+	</script>
+</html>

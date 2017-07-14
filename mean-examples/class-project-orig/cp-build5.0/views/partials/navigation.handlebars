@@ -1,0 +1,14 @@
+<nav>
+	{{#if nav}}
+		<ul>
+			<li><a href="/user/">Home</a></li>
+			<li><a href="/user/about">About Us</a></li>
+		</ul>
+	{{else if admin}}
+		<ul>
+			<li><a href="/admin/">Admin Home</a></li>
+			<li><a href="/admin/about">Admin About</a></li>
+			<li><a href="/admin/logout/">Logout</a></li>
+		</ul>
+	{{/if}}
+</nav>

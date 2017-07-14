@@ -1,0 +1,5 @@
+This is the insert mode
+
+I am typing in vim
+
+It really is not too difficult

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>Simple Geolocation</title>
+	<meta charset="utf-8" />
+	
+  </head>
+  <body>
+	<div id="output"></div>
+	<script>
+	  var output = '';
+	  navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+		
+		function successCallback(pos){	
+		  output = '<p>My latitude is '+pos.coords.latitude+'<br />';
+		  output += 'My longitude is '+pos.coords.longitude+'<br />';
+		  output += 'Accurate to '+pos.coords.accuracy+" meters</p>";
+		  document.getElementById('output').innerHTML = output;
+		}
+		
+		function errorCallback(posErr) {
+		  switch(posErr.code){
+			case 1 : output = '<p>Permission to use Geolocation was denied';break;
+			case 2 : output = '<p>The position of the device could not be determined';break;
+			case 3 : output = '<p>The Geolocation operation timed out';break;
+		  }
+		  output += '<br />Actual message from browser "'+posErr.message+'"</p>';
+		  document.getElementById('output').innerHTML = output;
+		}
+	  
+	  
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<main>
+	<h2>Add Administrators</h2>
+	<p>Enter Admin Username and Password and click 'Add Administrator'</p>
+	<form action="/admin/addAdmin/" method="post">
+		<div class="row">
+			<div class="col-md-6">
+			    <label for="username">Username</label>
+			    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+				    <label for="password">Password</label>
+				    <input type="password" style="width: 100%;" class="form-control" id="password" name="password" placeholder="Password">
+			  	</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+				    <button type="button" class="btn btn-default" id="addAdminBtn">Add Administrator</button>
+				</div>
+			</div>
+		</div>
+	  
+
+	<div id="ack"></div>
+</main>

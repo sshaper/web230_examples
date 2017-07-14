@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Open New Window</title>
+	</head>
+	<body>
+	<input id="openBtn" type="button" value="Open New Window" />
+	<input id="confirmBtn" type="button" value="Confirm Window" />
+	<input id="promptBtn" type="button" value="Prompt Window" />
+	<p><label>Enter text to transfer to new page: <input id="transToNewWin" type="text" /></label></p>
+	
+	<div id="pic"></div>
+	
+	
+	<script type="text/javascript" src="../../core/core-event-listeners.js"></script>
+	<script type="text/javascript">
+	Core.addEventListener(document.getElementById('openBtn'),"click",openWindow);
+	Core.addEventListener(document.getElementById('confirmBtn'),"click",confirmWindow);
+	Core.addEventListener(document.getElementById('promptBtn'),"click",promptWindow);
+	
+	function openWindow(){
+		window.open("new-window.html","","height=400,width=500,left=200,top=200,scrollbars=1,resizable=0");
+	}
+	
+	function confirmWindow(){
+		if (window.confirm("click OK to see alert box")){alert('You clicked OK')}
+	}
+	
+	function promptWindow(){
+		var entry = window.prompt('Enter Your Name','name here'); if(entry !== null){alert(entry);}
+	}
+	
+	</script>
+	</body>
+</html>

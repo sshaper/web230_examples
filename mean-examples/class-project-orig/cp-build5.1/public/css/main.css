@@ -1,0 +1,24 @@
+/* GENERAL */
+nav ul, nav li {margin: 0; padding: 0;}
+header, nav, main {display: block}
+
+/* IDs */
+#password {width: 200px;}
+
+/* CLASSES */
+.btn {margin: 10px 0 0 0;}
+.error {color: red;}
+
+/* HEADER */
+header {background: aqua; padding: 10px}
+
+/* NAV */
+nav {height: 40px; background: #F7F8F2;}
+nav ul {list-style: none;}
+nav ul li {float: left;}
+nav ul li a, nav ul li a:hover {color: #000;}
+nav ul li a {font-size: 1.2em; display: block; width: 200px; text-align: center; line-height: 40px}
+nav ul li a:hover {text-decoration: none; background: #D6CBA9;}
+
+/* MAIN */
+main {padding: 10px;}

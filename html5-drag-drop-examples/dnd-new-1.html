@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>HTML5 Drag and Drop basic test drag</title>
+	<meta charset="utf-8" />
+	
+  </head>
+  <body>
+	<div id='wrapper'>
+	<h1>HTML5 Drag and Drop basic test drag</h1>
+	<p>In this example you can drag the text but you cannot select it.  When you drag the text (Google Chrome) into the browser url it will enter the following text "http://wccnet.edu" into the browser address bar.  That in turn will take you to Washtenaw Community Colleges website.</p>
+    	
+	<div id="myDragDiv" draggable="true">
+        You cannot select this text but you can drag it. Dragging this text into the browser url will take you to Washtenaw Community College Website.
+
+        
+    </div>
+
+    <p>You can also drag this text into a text area</p>
+    <textarea rows="10" cols="200"></textarea> 
+
+    <script type="text/javascript">
+        var myDrag = document.getElementById('myDragDiv');
+        myDrag.addEventListener('dragstart', function(e){
+            e.dataTransfer.setData('text/plain','http://wccnet.edu');
+        }, false);
+    </script> 
+  </body>
+</html>

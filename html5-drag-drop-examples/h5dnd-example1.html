@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>HTML5 Drag and Drop Picture Example 1</title>
+	<meta charset="utf-8" />
+	<style type='text/css' >
+        #wrapper{margin: 0 auto; width: 900px;}
+		#images img{height: 15%; width: 15%;}
+		#cart{min-height: 275px; width: 275px; border: 3px dashed #ccc; margin: 10px; padding: 10px;}
+    </style>
+  </head>
+  <body>
+	<div id='wrapper'>
+	<h1>HTML5 Drag and Drop Picture Example 1</h1>
+	<p>In this example you can drag the pictures (one at a time) into the box and their id's will be added to the box.  You can drag the picture into the box more than once.</p>
+	
+	<div id="images">
+	  <img src="images/canyon1.jpg" alt="canyon1" draggable="true" id="canyon1" >
+	  <img src="images/canyon2.jpg" alt="canyon2" draggable="true" id="canyon2" >
+	  <img src="images/canyon3.jpg" alt="canyon3" draggable="true" id="canyon3" >
+	  <img src="images/canyon4.jpg" alt="canyon4" draggable="true" id="canyon4" >
+	  <img src="images/canyon5.jpg" alt="canyon5" draggable="true" id="canyon5" >
+	  <img src="images/canyon6.jpg" alt="canyon6" draggable="true" id="canyon6" >
+ 	</div>
+    <div id="cart"></div>
+	</div>
+    <script type="text/javascript">
+        var dragged = null;
+		
+		var imgs = document.getElementById('images');
+		
+		imgs.addEventListener('dragstart', function(e){
+			e.dataTransfer.setData("text",e.target.id);
+		  }, false);
+		
+		var cart = document.getElementById('cart');
+		
+		//dragover must have prevent default or return false assigned to work.
+		cart.addEventListener('dragover',function(e){
+			e.preventDefault();
+		},false)
+		
+		cart.addEventListener('drop',function(e){
+			p = document.createElement('p');
+			txt = document.createTextNode(e.dataTransfer.getData('text'));
+			p.appendChild(txt);
+			e.target.appendChild(p);
+		  },false);
+		
+    </script>
+  </body>
+</html>

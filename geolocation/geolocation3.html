@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>Geo Location with Google Map</title>
+	<meta charset="utf-8" />
+	
+  </head>
+  <body>
+	<div id="map"></div>
+    <div id="output"></div>
+	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script>
+	  
+    //set global variables	
+	var output = '';
+    var setMap;
+    var map;
+    var marker = false;
+    var path = [];
+    var firstTime = true;
+    var orgLat = 0;
+    var orgLon = 0;
+    var newLon = 0;
+    var newLat = 0;
+    var coords;
+      
+	//start geolocation	
+	if (navigator.geolocation) {
+		setMap = document.getElementById('map');
+		setMap.style.width = '640px';
+		setMap.style.height = '480px';
+		navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+	}
+	else{
+		document.getElementById('output').innerHTML = 'HTML5 Geolocation not supported by this browser';
+	}
+	
+	//if everything is okay run successCallback
+	function successCallback(pos){	
+		//if this is the first time set current latitude and longitude
+		if (firstTime){
+			//get cordinates from google maps
+			orgLat = pos.coords.latitude;
+			orgLon = pos.coords.longitude;
+			
+			//set the initial value of newLat and newLong
+			newLat = orgLat;
+			newLon = orgLon;
+			
+			//get coordinates
+			coords = new google.maps.LatLng(orgLat,orgLon);
+			
+			//set map
+			map = new google.maps.Map(setMap, {zoom: 14, center: coords, myTypeId: google.maps.MapTypeId.ROADMAP});
+			
+			//set marker
+			marker = new google.maps.Marker({position: coords, map: map});
+			
+			//set to false as each additional time will be randomly generated location.
+			firstTime = false;
+		}
+		else{
+			//enter last coordinates
+			path.push(new google.maps.LatLng(newLat,newLon));
+			
+			//this creates a random number that will set the flight in a north east direction.
+			newLat += Math.random()/500;
+			newLon += Math.random()/500;
+			
+			//enter current coordinates
+			path.push(new google.maps.LatLng(newLat,newLon));
+			
+			//get cordinates from google maps
+			coords = new google.maps.LatLng(newLat,newLon);
+			
+			//pan the current map to the coordinates
+			map.panTo(coords);
+
+			//if a marker was drawn remove it, this keeps from mulitple markers to be drawn.
+			//we only want one.
+			if (marker){
+				marker.setMap(null);
+			}
+			
+			//after removeing previous add new marker
+			marker = new google.maps.Marker({position: coords, map: map});
+
+			//draw line showing flight path.
+			var line = new google.maps.Polyline({
+				path : path,//path keeps all stop and start points in an array so the whole path can be drawn
+				strokeColor : '#0000ff',
+				strokeOpacity : 1.0,
+				strokeWeight : 3
+			});
+
+			//draw line on map
+			line.setMap(map);
+		}
+
+		//display location information and accuracy
+		output = '<p>Starting location: ' + orgLat + ', ' + orgLon + '</p>';
+		output += '<p>Current location: ' + newLat + ', ' + newLon + '</p>';
+		document.getElementById('output').innerHTML = output;
+					
+		//positions have been set so we pass null as the parameter.
+		//creates new postions based upon number of milliseconds set in setTimeout
+		
+		//setTimeoout calls successCallback when set number of miliseconds has passed.  SetTimout will fire once
+		//and then call successCallback which ultimately calls setTimeout again. This is known as a recursive function
+		
+		//NOTE: setInterval will not work on recursive functions as it will keep recalling itself multiple
+		//time with each iteration, thus setTimeout is used.
+		setTimeout(function(){successCallback(null);},2000);
+		
+	}
+			
+	function errorCallback(posErr) {
+	switch(posErr.code){
+		case 1 : output = '<p>Permission to use Geo location was denied';break;
+		case 2 : output = '<p>The position of the device could not be determined';break;
+		case 3 : output = '<p>The Geo location operation timed out';break;
+	  }
+	  output += '<br />Actual message from browser "'+posErr.message+'"</p>';
+	  document.getElementById('output').innerHTML = output;
+	}
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Robot run and move example</title>
+		<style type="text/css">
+		#wrapper{margin: 0 auto; width: 500px; position: relative;}
+		#robot{width: 150px; height: 150px; background-image: url(images/robot_strip.gif); background-position: 0 0;position: absolute; left: 175px;}
+		#onoff{background-color: green;}
+		
+		</style>
+	</head>
+	<body>
+	<div id="wrapper">
+		<p><input type="button" id="onoff" value="Start Robot" /></p>
+		<div id="robot"></div>
+	</div>
+	<script type="text/javascript" src="../core/core-event-listeners.js"></script>
+	<script type="text/javascript">
+			
+	//set some global variables
+	var robot = document.getElementById('robot');
+	var onoff = document.getElementById('onoff');
+	var frameHeight = 150;
+	var frames = 10;
+	var offsetY = 0;
+	var toggle = 0;
+	var animation;
+	var posY=robot.offsetTop;
+	var posX=robot.offsetLeft;
+	var move;
+	var distance=3;
+	var interval=20;
+	
+	//add event listener for robot on off	
+	Core.addEventListener(onoff,"click",robotOnOff);
+	
+	//add event listener for keydown and key up to move or stop robot
+	Core.addEventListener(document,"keydown",moveRobot);
+	Core.addEventListener(document,"keyup",stopMove);
+	
+	
+	//move robot function determines which direction to move robot based upon arrow key pressed
+	function moveRobot(event){
+		var e = event || window.event;
+		
+		/*Need to remove the event listener so when the key is held down
+		it does not keep firing the moveRobot*/
+		Core.removeEventListener(document,"keydown",moveRobot);
+		
+		//depending on what key is pressed move in that direction
+		switch(e.keyCode){
+			case 40 : moveDown();break;
+			case 38 : moveUp();break;
+			case 37 : moveLeft();break;
+			case 39 : moveRight();break;
+			
+		}
+	}
+
+	//toggles robot on and off
+	function robotOnOff(){
+		if (toggle === 0){
+			this.value = "Stop Robot";
+			this.style.backgroundColor = "red";
+			toggle = 1;
+			startAnimation();
+		}
+		else{
+			this.value = "Start Robot";
+			this.style.backgroundColor = "green";
+			toggle = 0;
+			stopAnimation();
+		}
+	}
+
+	/*If the toggle === 1 then do the movement otherwise do nothing*/
+	function moveLeft(){
+		if(toggle===1){
+			robot.style.left = posX+"px";
+			posX-=distance;
+			move = setTimeout(function(){moveLeft()},interval);
+		}
+	}
+	
+	function moveRight(){
+		if(toggle===1){
+			robot.style.left = posX+"px";
+			posX+=distance;
+			move = setTimeout(function(){moveRight()},interval);
+		}
+	}
+
+
+	function moveUp(){
+		if(toggle===1){
+			robot.style.top = posY+"px";
+			posY-=distance;
+			move = setTimeout(function(){moveUp()},interval);
+		}
+	}
+	
+	function moveDown(){
+		if(toggle===1){
+			robot.style.top = posY+"px";
+			posY+=distance;
+			move = setTimeout(function(){moveDown()},interval);
+		}
+	}
+
+	//stops the robot from moving
+	function stopMove(){
+		clearTimeout(move);
+		
+		/*Add the event listener back to key down.*/
+		Core.addEventListener(document,"keydown",moveRobot);
+	}
+	
+	
+	/*function that starts the  robot animation set to 50 milliseconds.
+	20 x 50 = 1000 so we have about 20 frames per second*/
+	function startAnimation(){
+		animation = setInterval("displayAnimation()",50);
+	}
+	
+	 
+	function displayAnimation(){
+		offsetY -= frameHeight;
+		
+		/*This runs the animation of the robot when turned on, if the offset is less than negative frameheight times frames
+		then the offset gets reset.*/
+		if (offsetY <= (-frameHeight * frames)){
+			offsetY = 0;
+		}
+		robot.style.backgroundPosition = "0 "+offsetY+"px";
+	}
+	
+	//When robot animation is stopped goes to first frame.
+	function stopAnimation(){
+		clearInterval(animation);
+		robot.style.backgroundPosition = "0 0";
+	}
+	
+	</script>
+	</body>
+</html>

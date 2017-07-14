@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Location Properties and Events</title>
+	</head>
+	<body>
+	<input type="button" id="back" value="Back" />
+	<input type="button" id="forward" value="Forward" />
+	<input type="button" id="go1" value="Go Forward" />
+	<input type="button" id="go2" value="Go Back" />
+	<input type="button" id="go3" value="Go Reload" />
+	<input type="button" id="length" value="Length" />
+	<script type="text/javascript">
+	document.getElementById('back').onclick = function(){history.back()};
+	document.getElementById('forward').onclick=function(){history.forward();}
+	document.getElementById('go1').onclick=function(){history.go(1);}
+	document.getElementById('go2').onclick=function(){history.go(-1);}
+	document.getElementById('go3').onclick=function(){history.go(0);}
+	document.getElementById('length').onclick=function(){alert(history.length);}
+	</script>
+	</body>
+</html>

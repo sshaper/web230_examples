@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Ajax Example 1</title>
+	
+<!--below is a script which allows IE 8 to understand HTML 5 elements.-->
+<!--[if lt IE 9]>
+	<script>
+		var elementsArray = ['abbr', 'article', 'aside', 'audio', 'bdi', 'canvas', 'data', 'datalist', 'details', 'figcaption', 'figure', 'footer', 'header', 'main', 'mark', 'meter', 'nav', 'output', 'progress', 'section', 'summary', 'template', 'time', 'video'];
+		var len = elementsArray.length;
+		for(i = 0; i < len; i++){
+			document.createElement(elementsArray[i]);
+		}
+	</script>
+<![endif]-->
+</head>
+	<body>
+	<div id="response"></div>
+	<script type="text/javascript" src="js/Ajax.js"></script>
+	<script type="text/javascript">
+	Ajax.sendRequest('/ajax1',handleRequest);
+	function handleRequest(req){
+		var response = document.getElementById('response');
+		response.innerHTML = req.responseText;
+	}
+	</script>
+	</body>
+</html>

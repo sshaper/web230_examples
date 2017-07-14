@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Ajax Example 3</title>
+	
+<!--below is a script which allows IE 8 to understand HTML 5 elements.-->
+<!--[if lt IE 9]>
+	<script>
+		var elementsArray = ['abbr', 'article', 'aside', 'audio', 'bdi', 'canvas', 'data', 'datalist', 'details', 'figcaption', 'figure', 'footer', 'header', 'main', 'mark', 'meter', 'nav', 'output', 'progress', 'section', 'summary', 'template', 'time', 'video'];
+		var len = elementsArray.length;
+		for(i = 0; i < len; i++){
+			document.createElement(elementsArray[i]);
+		}
+	</script>
+<![endif]-->
+</head>
+	<body>
+	<p>Sending data via delimited string</p>
+	<p><label>First Name: </label><input type="text" id="fname" /></p>
+	<p><label>Last Name: </label><input type="text" id="lname" /></p>
+	<p><input type="button" id="submitBtn" value="Send Info via Ajax" /></p>
+	<div id="response"></div>
+	<script type="text/javascript" src="js/Ajax.js"></script>
+	<script type="text/javascript">
+	var btn = document.getElementById('submitBtn');
+	var response = document.getElementById('response');
+	btn.addEventListener("click",sendRequest,false);
+	
+	function sendRequest(){
+		var fname = document.getElementById('fname').value;
+		var lname = document.getElementById('lname').value;
+		var data = fname+"^^"+lname;
+		Ajax.sendRequest('/ajax3',handleRequest,data);
+	}
+	
+	function handleRequest(req){
+		response.innerHTML = req.responseText;
+	}
+	</script>
+	</body>
+</html>

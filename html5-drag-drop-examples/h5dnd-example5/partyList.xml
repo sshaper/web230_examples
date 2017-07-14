@@ -1,0 +1,44 @@
+<senators>
+	<senator>
+		<name>Barbara Boxer</name>
+		<party>Democrat</party>
+	</senator>
+	<senator>
+		<name>Diane Feinstein</name>
+		<party>Democrat</party>
+	</senator>
+	<senator>
+		<name>Al Franken</name>
+		<party>Democrat</party>
+	</senator>
+	<senator>
+		<name>Charles Schumer</name>
+		<party>Democrat</party>
+	</senator>
+	<senator>
+		<name>John Kerry</name>
+		<party>Democrat</party>
+	</senator>
+	
+	<senator>
+		<name>Lamar Alexander</name>
+		<party>Republican</party>
+	</senator>
+	<senator>
+		<name>Kelly Ayotte</name>
+		<party>Republican</party>
+	</senator>
+	<senator>
+		<name>Scott Brown</name>
+		<party>Republican</party>
+	</senator>
+	<senator>
+		<name>Susan Collins</name>
+		<party>Republican</party>
+	</senator>
+	<senator>
+		<name>Orrin Hatch</name>
+		<party>Republican</party>
+	</senator>
+	
+</senators>

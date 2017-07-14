@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>WEB230 Event Delegation Example 4</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+		body {font: 75%/2.0 verdana,geneva,lucida,arial,sans-serif;}
+		a{color: #000;}
+		.listBg{background-color: aqua;}
+	</style>
+</head>
+<body>
+
+<ul>
+  <li><span><a href="product_a.html">Product A</a></span></li>
+  <li><span><a href="product_b.html">Product B</a></span></li>
+  <li><span><a href="product_c.html">Product C</a></span></li>
+  <li><span><a href="product_d.html">Product D</a></span></li>
+</ul>
+
+<script type="text/javascript">
+var products = document.getElementsByTagName('ul');
+
+products[0].addEventListener("mouseover",highlightOn, false);
+products[0].addEventListener("mouseout",highlightOff,false);
+
+
+function highlightOn(evt) {
+    var currentNode = evt.target || evt.srcElement;
+    //if we are not sure of the structure we can use a while loop
+     //and walk up the dom until we find the li tag
+     //when we do find the li tag, we set the current node to the li tag.
+    while(currentNode.nodeName.toLowerCase()!=="li"){
+	    //if we find the ul tag then we cancel the loop
+	    //you could set this to a parent further up then
+	    //the ul tag, but if you didn't check for a parent
+	    //somewhere up the chain you would generate an error
+	    if (currentNode.nodeName.toLowerCase()==="ul"){
+	    	break;
+	    }
+	    else{
+			//if the currentNode is not the li and not the ul
+			//then reassign the currentNode by stepping up to the next parent.
+			currentNode = currentNode.parentNode;    
+	    }
+	    
+    }
+    //If the current node = li then assign the class "listBg" to it.
+    if (currentNode.nodeName.toLowerCase()==="li"){
+		//assign the currentNode to the class listBg
+		currentNode.className = "listBg";
+    }
+     
+}
+
+function highlightOff(evt) {
+	var currentNode = evt.target || evt.srcElement;
+	while(currentNode.nodeName.toLowerCase()!=="li"){
+	    if (currentNode.nodeName.toLowerCase()==="ul"){
+	    	break;
+	    }
+	    else{
+			currentNode = currentNode.parentNode;    
+	    }
+	    
+    }
+    if (currentNode.nodeName.toLowerCase()==="li"){
+		currentNode.className = '';
+    }
+
+}
+</script>
+</body>
+</html>

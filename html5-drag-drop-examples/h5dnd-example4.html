@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>HTML5 Drag and Drop Sorting Example</title>
+	<meta charset="utf-8" />
+	<style type='text/css' >
+        .draggable{font: bold 16px sans-serif; width: 200px; height: 20px; text-align: center; background: white; cursor: move;}
+		.dropzone{width: 200px; height: 20px; background: lightblue; margin-bottom: 10px; padding: 10px;}
+    </style>
+  </head>
+  <body>
+	<div id='wrapper'>
+	<h1>HTML5 Drag and Drop Sorting Example</h1>
+	<p>This is a simple sorting drag and drop.</p>
+	
+	<div class="dropzone">
+	  <div class="draggable" draggable="true">Water</div>
+	</div>
+	<div class="dropzone">
+	  <div class="draggable" draggable="true">Coffee</div>
+	</div>
+	<div class="dropzone">
+	  <div class="draggable" draggable="true">Tea</div>
+	</div>
+	<div class="dropzone"></div>
+	</div>
+    <script type="text/javascript">
+        var dragged = null //reference to element being dragged
+		var wrapper = document.getElementById('wrapper');
+		
+		//I willl add the event listener to the wrapper so that all draggable and dropable elements will have an event listener.
+		
+		wrapper.addEventListener('dragstart', function(e){
+			if (e.target.className !== 'draggable') {
+			  return;
+			}
+			else{
+			  //even though no data is being sent we need to include the setData
+			  e.dataTransfer.setData("text","");
+			  dragged = e.target;//reference to what is being dragged
+			  e.target.style.border = '2px solid red';
+			}
+			
+		  
+		  },false);
+		
+		var dropdivs = document.getElementsByClassName('dropzone');
+		var len = dropdivs.length;
+		
+		//we are using a loop here to assign all the event listeners to each div with the
+		//classname of dropzone.  We could attempt to use event delegation here as well
+		//this is another approach.
+		for (var i = 0; i < len; i++){
+		  var div = dropdivs[i];
+		  div.addEventListener('dragenter',function(e){
+			  var t = e.target; //the object we are dragging over
+			  
+			  //if it is not a dropzone then do nothing
+			  if (t.className !== 'dropzone') {
+				return;
+			  }
+			  else{
+				//check to see if it is a div containing nothing
+				//if it contains a child element turn red othewise
+				//trun lime
+				if (t.firstElementChild !== null) {
+				  t.style.background = 'red';
+				}
+				else{
+				  t.style.background = 'lime';
+				}
+				
+				e.preventDefault();//required in some browsers
+			  }
+			
+		  },false);
+		  
+		  
+		  div.addEventListener('dragover',function(e){
+			  var t = e.target;
+			  
+			  //disallow drop on anything that is not a dropzone
+			  if (t.className !== "dropzone" || t.firstElementChild !== null) {
+				return;
+			  }
+			  else{
+				//allow a drop on everything else.
+				e.preventDefault();//if I don't include this drop won't work
+			  }
+			
+			},false);
+		  
+		  div.addEventListener('dragleave', function(e){
+			  //reset background of potential drop target
+			  if (e.target.className === 'dropzone') {
+				e.target.style.background = '';
+			  }
+		
+			},false);
+		  
+		  div.addEventListener('drop', function(e){
+			e.preventDefault();
+			if (e.target.className === 'dropzone') {
+			  e.target.style.background = '';//reset background color
+			  //remove child node from dragged target and append it to
+			  //dropzone
+			  dragged.parentNode.removeChild(dragged);
+			  e.target.appendChild(dragged)
+			}
+			
+		  },false);
+		  
+		  div.addEventListener('dragend', function(e){
+			  e.target.style.border = ''; //reset border
+			},false);
+		  
+		}//end for loop
+		  </script>
+  </body>
+</html>

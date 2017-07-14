@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>Storage Event</title>
+	<meta charset="utf-8" />
+	
+  </head>
+  <body>
+	<p>Current value in local storage under the key 'storage-event-text' is:</p>
+    <div id="output"></div>
+    <p><label>New Value for storage-event-text key<input type='text' id='newValue' /></label></p>
+    <p><input type='button' id='changeBtn' value='Change Value' /></p>
+    <p><input type='button' id='popUpBtn' value='Open Pop Up Window' /></p>
+	<script>
+	  localStorage['storage-event-test'] = 'Hello Class';
+      document.getElementById('output').innerHTML = localStorage['storage-event-test'];
+      document.getElementById('popUpBtn').addEventListener('click',popup,false);
+      document.getElementById('changeBtn').addEventListener('click', changeValue ,false);
+      
+       function changeValue(){
+        	localStorage.setItem('storage-event-test',document.getElementById('newValue').value);
+        	document.getElementById('output').innerHTML = localStorage['storage-event-test'];
+       }
+      
+      
+      function popup(){
+            window.open("window.html" ,"","height=400,width=500,left=200,top=200,scrollbars=1,resizable=0");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>WebSocket Sample</title>
+        <meta charset="utf-8">
+        <script src="websocket.js"></script>
+        <link rel="stylesheet" href="websocket.css">
+    </head>
+    <body>
+        <div id="wrapper">
+        <header>
+            <h1>WebSocket Example</h1>
+        </header>
+			<p>To use this example you must first open the broadcast.py file using python (python broadcast.py NOTE: Use python 2.7 not python 3)</p>
+			<p>Then open another copy of this page into the browser.  On both pages click the connect button to open the socket.  You will see the status change to "Socket Open."  Enter some text in the box and click "send."  You will see a message on the sending end that shows the message sent and received, on the other page you will see that the message sent is just received but not sent.  You can open an many browser tabs as you want.</p>
+			
+			
+			<div id="content">
+					<input type="button" id="connectButton" value="Connect" />
+					<input type="button" id="disconnectButton" value="Disconnect" />
+					<br>
+					User:
+					<input type="text" id="user" size="20">
+					<br>
+					Message:
+					<input type="text" id="message" size="20" >
+					<br>
+					<input type="button" id="sendButton" value="send" />
+					
+					<p id="status">Status: <span>Socket Closed</span></p>
+					
+					
+					<div id="messages">
+						<dl>
+						
+						</dl>
+					</div>
+			</div>
+        </div>
+    </body>
+</html>
