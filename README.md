@@ -1,2 +1,2 @@
 # web230_examples
-Web 230 Examples
+These are the example files for my web230 class.
