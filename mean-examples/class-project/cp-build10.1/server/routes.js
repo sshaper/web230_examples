@@ -12,13 +12,6 @@ var express = require('express'),
 
 module.exports = function(app){
 	/* USER ROUTES */
-	router.use(function(req, res, next){
-		if (req.secure) {
-			return next();
-		};
-		res.redirect('https://'+req.hostname+':'+app.get('port')+req.url);
-	});
-
 	router.get('/user/', home.index);
 	router.get('/user/about', home.about);
 	router.get('/user/login', login.index);

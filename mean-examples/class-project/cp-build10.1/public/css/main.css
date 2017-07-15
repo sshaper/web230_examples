@@ -4,7 +4,7 @@ header, nav, main {display: block}
 
 
 /* IDs */
-#password, #username {width: 200px;}
+#password {width: 200px;}
 #savePage {margin: 10px 0 0 0;}
 #ack {min-height: 100px; width: 150px; background: aqua; border-radius: 5px; border: 1px solid black; padding: 10px; text-align: center; color: #000; position: absolute; top: 10%; left: 50%; margin-left: -75px; display: none;}
 

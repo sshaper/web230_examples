@@ -128,6 +128,8 @@ cp.deleteFile = function(e){
 						setTimeout(function(){cp.ackMsg('','#000',false)}, 1500);
 					}
 					else if (responseArr[0] === 'success'){
+						/*REMOVE EVENT LISTENER SO IT IS NOT SITTING IN MEMORY*/
+						document.getElementById('buttons').removeEventListener('click', addEvent, false);
 
 						cp.ackMsg('File was successfully deleted', '#000', true);
 
