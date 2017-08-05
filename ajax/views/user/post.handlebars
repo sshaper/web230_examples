@@ -1,0 +1,61 @@
+<main>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+		    	<label for="fname">First Name</label>
+		    	<input type="fname" class="form-control" id="fname">
+  			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+		    	<label for="lname">Last Name</label>
+		    	<input type="lname" class="form-control" id="lname">
+  			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<input type="button" id="getInfo" class="btn btn-primary" value="Send and Get Info">
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="result"></div>
+		</div>
+	</div>
+	<script>
+      document.getElementById('getInfo').addEventListener('click', getInfo, true);
+      function getInfo(){
+        var xhr, data = {};
+        if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+        } else {
+          /*CODE FOR OLDER BROWSERS*/
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.onreadystatechange = function() {
+          /*IF EVERYTING IS OKAY THEN DISPLAY THE RESULT */
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("result").innerHTML = this.responseText;
+          }
+        };
+        /* WHEN I CREATED THE DATA VARIABLE I DECLARED IT AS AN OBJECT.  THAT WAY I CAN SEND MULTIPLE THINGS VIA MY OBJECT. IN THIS EXAMPLE I AM SENDING THE FIRST AND LAST NAME*/
+        data.firstname = document.getElementById('fname').value;
+        data.lastname = document.getElementById('lname').value;
+
+        /* I STRINGIFY MY OBJECT SO I CAN SEND IT AS A AJAX REQUEST */
+        data = JSON.stringify(data);
+        console.log(data)
+        
+        /* THIS IS A POST REQUEST IT WILL SEND AND GET INFORMATION TO/FROM SERVER */
+        xhr.open("POST", "/post", true);
+
+        /*IN ORDER TO SEND POST DATA I MUST SEND A FORM HEADER REQUEST */
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        /*I USE THE DATA VARIABLE THAT I CREATED TO STORE THE ACTUAL DATA AND THEN SEND THE DATA USING THE DATA NAME I USE WITH THE SEND REQUEST.  A SEND REQUEST MUST HAVE A NAME THAT ATTACHES TO WHAT IS BEING SENT.*/
+        xhr.send('data=' + data);
+      }
+    </script>
+</main>

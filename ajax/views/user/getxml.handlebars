@@ -1,0 +1,54 @@
+<main>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Get XML Example</h1>
+		    <input type="button" id="getInfo" class="btn btn-primary" value="Get XML">
+		    <div id="result"></div>
+		</div>
+	</div>
+	<script>
+		document.getElementById('getInfo').addEventListener('click', getInfo, true);
+		function getInfo(){
+			var xhr, book, len, innerlen, i=0, j=0, list, list = ""; 
+			if (window.XMLHttpRequest) {
+			  xhr = new XMLHttpRequest();
+			} else {
+			  /*CODE FOR OLDER BROWSERS*/
+			  xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+			xhr.onreadystatechange = function() {
+				/*IF EVERYTING IS OKAY THEN DISPLAY THE RESULT */
+				if (this.readyState == 4 && this.status == 200) {
+					/* I USED THE XML2JS MODULE SO IT RETURNED XML COVERTED TO A JSON OBJECT*/
+					obj = JSON.parse(this.responseText);
+					
+					/*I CREATED A VARIABLE NAMED BOOK THAT WAS EQUAL TO THE OBJECT.BOOKS.BOOK TO KEEP FROM WRITING OBJ.BOOKS.BOOK EACH TIME.*/
+
+					book = obj.books.book;
+					len = book.length;
+					i = 0;
+					list = '<ul>';
+					while(i < len){
+						list += "<li>" + book[i].title[0]._ + " By "+ book[i].title[0].$.author + "<br>";
+						list += "Published by " + book[i].publisher[0] + "<br>";
+						list += "Editions: <ul>";
+						innerlen = book[i].editions[0].edition.length;
+						j = 0;
+						while(j < innerlen){
+							list += "<li>" + book[i].editions[0].edition[j]._ + " - " + book[i].editions[0].edition[j].$.year + "</li>";
+							j++;	
+						}
+						list += '</ul></li>';
+						i++;
+					}
+					list += '</ul>'
+					document.getElementById('result').innerHTML = list;
+				}
+			}
+			xhr.open("GET", "/getxml", true);
+        	xhr.send();
+
+		}
+    </script>
+</main>

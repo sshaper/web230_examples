@@ -1,0 +1,15 @@
+{
+  "name": "nodebasics",
+  "version": "1.0.0",
+  "description": "Basic MVC for node",
+  "author": "Scott Shaper",
+  "license": "ISC",
+  "dependencies": {
+  	"body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "express-session": "^1.12.1",
+    "xml2js": "^1.1.1"
+  }
+}
+
