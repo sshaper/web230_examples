@@ -12,5 +12,5 @@ app.set('port',process.env.PORT || 3000);
 
 /* LISTEN ON PORT 3000 */
 app.listen(app.get('port'),function(){
-	console.log('Server up : http://45.55.242.213:' + app.get('port'));
+	console.log('cpbuild1.0 server up...');
 });

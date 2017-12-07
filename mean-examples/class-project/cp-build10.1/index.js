@@ -24,5 +24,5 @@ app.set('views', __dirname + '/views');
 http.createServer(app).listen(80);
 
 https.createServer(options, app).listen(app.get('port'),function(){
-	console.log('Server up : https://45.55.242.213:' + app.get('port'));
+	console.log('cpbuild10.1 Server up...');
 });

@@ -1,9 +1,12 @@
 {
   "name": "classproject",
-  "version": "4.0",
+  "version": "4.1.0",
   "description": "Class Project",
   "author": "Scott Shaper",
   "license": "ISC",
+  "scripts": {
+    "start": "npm install && node index.js"
+  },
   "dependencies": {
   	"body-parser": "^1.14.1",
     "express": "^4.13.3",

@@ -22,5 +22,5 @@ app.set('views', __dirname + '/views');
 
 /* THIS IS WHERE WE SET UP THE HTTPS*/
 https.createServer(options, app).listen(app.get('port'),function(){
-	console.log('Server up : https://45.55.242.213:' + app.get('port'));
+	console.log('cpbuild10.0 Server up...');
 });
