@@ -3,7 +3,7 @@ exports.db = function(){
 		connectionLimit: 10,
 		host: 'localhost',
 		user: 'root',
-		password: 'karate11',
+		password: 'password',
 		database: 'classProject'
 	}
 	return conn;
