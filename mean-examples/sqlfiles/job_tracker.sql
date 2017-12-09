@@ -124,7 +124,7 @@ LOCK TABLES `admin` WRITE;
 
 INSERT INTO `admin` (`id`, `email`, `password`)
 VALUES
-	(1,'sshaper@test.com','$2y$10$g2/yUILInfGfui58mEuw1OoaZTjA1PKF6dGLLTpFlkX0r.XqSHHwy');
+	(1,'admin@test.com','$2a$10$ghP42SR5fRbgdoChQLES3u4pzGwJxK0SIbmmlcSQ522MgJXiLnw1G');
 
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
