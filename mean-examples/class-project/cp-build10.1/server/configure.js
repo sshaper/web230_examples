@@ -26,13 +26,13 @@ module.exports = function(app){
 	/*HANDLE 404*/
 	app.use(function(req, res) {
 	res.status(400);
-	res.render('404error',{nav: true, subtitle: " - Page Not Found", text: 'We are sorry the page you are looking for is not found on this site.'});
+	res.render('404error',{nav: true, heading: " - Page Not Found", text: 'We are sorry the page you are looking for is not found on this site.'});
 	});
 
 	/*HANDLE 500*/
 	app.use(function(error, req, res, next) {
 	res.status(500);
-	res.render('404error',{nav: true, subtitle: " - Internal Server Error", text: 'Internal Server Error site is down.'});
+	res.render('404error',{nav: true, heading: " - Internal Server Error", text: 'Internal Server Error site is down.'});
 	});
 
 	/* SET UP HANDLEBARS AS YOUR TEMPLATE ENGINE */

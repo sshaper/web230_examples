@@ -4,6 +4,8 @@ These are the examples from my web250 class on PHP. The actual course notes expl
 ## Installing Modules
 In order for the class-project builds to work you must install the modules.  To do this just run the package.json file from the web230_examples folder sudo npm install.
 
+You will have to also add the classProject database to MySQL.  Navigate to mean-examples/sqlfiles/ and enter mysql -u root -p < classProject.sql.  Enter your MySQL password.  File will be uploaded.
+
 
 ## Example Files
 The examples are as follows:
