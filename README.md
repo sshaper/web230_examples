@@ -1,6 +1,11 @@
 # web230_examples
-These are the examples from my web250 class on PHP. The actual course notes explain what the examples do in more detail. To access the course you must be enrolled in the WEB250 class at Washtenaw Community College.These are the example files for my web230 class.
+These are the examples from my web250 class on PHP. The actual course notes explain what the examples do in more detail. To access the course you must be enrolled in the WEB230 class at Washtenaw Community College. These are the example files for my web230 class.
 
+## Installing Modules
+In order for the class-project builds to work you must install the modules.  To do this just run the package.json file from the web230_examples folder sudo npm install.
+
+
+## Example Files
 The examples are as follows:
 
 * bom - Examples of using the browser object model.
@@ -18,4 +23,6 @@ The examples are as follows:
 * navigator - Examples using the navigator object.
 * time-functions - Examples using JavaScript time related functions.
 * websockets - Examples using JavaScript web sockets.
-* webworkers - Examples using JavaScript web workers
+* webworkers - Examples using JavaScript web workers.
+
+
