@@ -1,4 +1,4 @@
-var db = require('../../server/db'),
+var db = require('../../modules/Conn'),
 	mysql = require('mysql'),
 	/* I NEED TO CREATE THE CONNECTION HERE (INSTEAD OF IN MODULE EXPORTS) OTHERWISE I WILL CREATE TOO MANY CONNECTIONS WHEN TOO MANY CONCURRENT USERS ACCESS THE DATABASE */
 	pool = db.connect(),
