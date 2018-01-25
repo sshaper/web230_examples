@@ -1,6 +1,5 @@
 /* PULL IN THE DEPENDENCIES */
-var routes = require('./routes'),
-	express = require('express')
+var routes = require('./routes');
 
 module.exports = function(app){
 	/* PUT APP INTO ROUTES CONSTRUCTOR */

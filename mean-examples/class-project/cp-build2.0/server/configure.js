@@ -1,7 +1,6 @@
 /* PULL IN THE DEPENDENCIES */
 var routes = require('./routes'),
-	exphbs = require('express-handlebars'),
-	express = require('express')
+	exphbs = require('express-handlebars');
 
 module.exports = function(app){
 	/* PUT APP INTO ROUTES CONSTRUCTOR */
