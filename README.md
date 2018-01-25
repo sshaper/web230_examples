@@ -1,5 +1,5 @@
 # web230_examples
-These are the examples from my web230 class in Node.js. The actual course notes explain what the examples do in more detail. To access the course you must be enrolled in the WEB230 class at Washtenaw Community College. These are the example files for my web230 class.
+These are the examples from my web230 class in JavaScript. The actual course notes explain what the examples do in more detail. To access the course you must be enrolled in the WEB230 class at Washtenaw Community College. These are the example files for my web230 class.
 
 ## Installing Modules
 In order for the class-project builds to work you must install the modules.  To do this just run the package.json file from the web230_examples folder "sudo npm install".
