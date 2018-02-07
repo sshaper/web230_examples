@@ -1,0 +1,80 @@
+<main>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+		    	<label for="fname">File Name</label>
+		    	<input type="fname" class="form-control" id="fname">
+  			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+		    	<label for="file">Select File</label>
+		    	<input type="file" class="form-control" id="file">
+  			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<input type="button" id="sendFile" class="btn btn-primary" value="Send and Get Info and File">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="result"></div>
+		</div>
+	</div>
+	<script>
+      document.getElementById('sendFile').addEventListener('click', getInfo, true);
+      function getInfo(){
+        var xhr, formData, output, print;
+        if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+        } else {
+          /*CODE FOR OLDER BROWSERS*/
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.onreadystatechange = function() {
+          /*IF EVERYTING IS OKAY THEN DISPLAY THE RESULT */
+          if (this.readyState == 4 && this.status == 200) {
+            output = JSON.parse(this.responseText);
+
+            console.log(output);
+            print = "File destination - " + output.file.destination + "<br>";
+            print += "File encoding - " + output.file.endcoding + "<br>";
+            print += "Fieldname - " + output.file.fieldname + "<br>";
+            print += "Mimetype - " + output.file.mimetype + "<br>";
+            print += "Original Name - " + output.file.originalname + "<br>";
+            print += "Sever Path - " + output.file.path + "<br>";
+            print += "File Size - " + output.file.size + "<br>";
+            print += "User entered file name - " + output.name.filename + "<br>";
+
+
+            document.getElementById("result").innerHTML = print;
+          }
+        };
+        /* WHEN I CREATED THE DATA VARIABLE I DECLARED IT AS AN OBJECT.  THAT WAY I CAN SEND MULTIPLE THINGS VIA MY OBJECT. IN THIS EXAMPLE I AM SENDING THE FIRST AND LAST NAME*/
+        formData = new FormData();
+        formData.append('file', document.getElementById('file').files[0]);
+        formData.append('filename', document.getElementById('fname').value);
+
+
+        //data.firstname = document.getElementById('fname').value;
+        
+
+        /* I STRINGIFY MY OBJECT SO I CAN SEND IT AS A AJAX REQUEST */
+        //data = JSON.stringify(data);
+        //console.log(data)
+
+        
+        
+        /* THIS IS A POST REQUEST IT WILL SEND AND GET INFORMATION TO/FROM SERVER */
+        xhr.open("POST", "/postfile", true);
+
+        /*IN ORDER TO SEND POST DATA I MUST SEND A FORM HEADER REQUEST */
+        //xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        /*I USE THE DATA VARIABLE THAT I CREATED TO STORE THE ACTUAL DATA AND THEN SEND THE DATA USING THE DATA NAME I USE WITH THE SEND REQUEST.  A SEND REQUEST MUST HAVE A NAME THAT ATTACHES TO WHAT IS BEING SENT.*/
+        xhr.send(formData);
+      }
+    </script>
+</main>

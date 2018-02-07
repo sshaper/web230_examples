@@ -43,6 +43,18 @@ module.exports = {
         output += "My first name is " + data.firstname;
         output += " and my last name is " + data.lastname;
         res.send(output);
+     },
+
+     postfileform(req, res){
+        res.render('user/postfile',{title: 'Post File Example', heading: 'Post File Example', nav: true});
+     },
+
+     postfile: function(req, res){
+        console.log(req.file);
+        console.log(req.body);
+        var output = {file: req.file, name: req.body}
+        output = JSON.stringify(output);
+        res.send(output);
      }
 
 
