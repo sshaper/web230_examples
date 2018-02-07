@@ -50,12 +50,9 @@ module.exports = {
      },
 
      postfile: function(req, res){
-        console.log(req.file);
-        console.log(req.body);
+        /* ALL I DID HERE WAS GET THE FILE AND BODY OBJECTS OF THE REQUEST OBJECT AND RETURN THEM.*/
         var output = {file: req.file, name: req.body}
         output = JSON.stringify(output);
         res.send(output);
      }
-
-
 }

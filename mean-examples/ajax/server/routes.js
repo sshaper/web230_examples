@@ -16,6 +16,8 @@ module.exports = function(app){
 	router.get('/postfileform', home.postfileform);
 
 	router.post('/post',home.post);
+
+	/* I HAVE TO USE MULTER HERE SO I CAN SEND MY FILE.  THE DESTINATION IS THE FOLDER I WANT TO SEND THE FILE TOO.  THE SINGLE MEANS SINGLE FILE ONLY.*/
 	router.post('/postfile', multer({dest:'./tmp'}).single('file'), home.postfile)
 	
 

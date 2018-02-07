@@ -30,15 +30,18 @@
         if (window.XMLHttpRequest) {
           xhr = new XMLHttpRequest();
         } else {
-          /*CODE FOR OLDER BROWSERS*/
+          /* CODE FOR OLDER BROWSERS */
           xhr = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xhr.onreadystatechange = function() {
+          
           /*IF EVERYTING IS OKAY THEN DISPLAY THE RESULT */
           if (this.readyState == 4 && this.status == 200) {
+            
+            /* I RETURNED THE SENT OBJECTS AS STRINGS AND THEN TURNED THEM BACK INTO AN OBJECT TO DISPLAY*/
             output = JSON.parse(this.responseText);
 
-            console.log(output);
+            /*THESE ARE THE PROPERTIES OF THE FILE OBJECT*/
             print = "File destination - " + output.file.destination + "<br>";
             print += "File encoding - " + output.file.endcoding + "<br>";
             print += "Fieldname - " + output.file.fieldname + "<br>";
@@ -46,34 +49,30 @@
             print += "Original Name - " + output.file.originalname + "<br>";
             print += "Sever Path - " + output.file.path + "<br>";
             print += "File Size - " + output.file.size + "<br>";
+
+            /* THIS IS THE PROPERTY OF THE NAME OBJECT */
             print += "User entered file name - " + output.name.filename + "<br>";
 
 
             document.getElementById("result").innerHTML = print;
           }
         };
-        /* WHEN I CREATED THE DATA VARIABLE I DECLARED IT AS AN OBJECT.  THAT WAY I CAN SEND MULTIPLE THINGS VIA MY OBJECT. IN THIS EXAMPLE I AM SENDING THE FIRST AND LAST NAME*/
+
+        /* I INSTATIATE THE FORM DATA OBJECT AND USE THAT TO SEND ME FILE AND THE TEXT. THE FORM DATA OBJECT IS GREAT FOR SENDING FILES VIA AJAX*/
         formData = new FormData();
         formData.append('file', document.getElementById('file').files[0]);
         formData.append('filename', document.getElementById('fname').value);
 
+        /* UNLIKE THE PREVIOUS POST EXAMPLE I DO NOT WANT TO USE THE  application/x-www-form-urlencoded REQUEST HEADER, THUS I HAD COMMENTED IT OUT
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");*/
 
-        //data.firstname = document.getElementById('fname').value;
-        
 
-        /* I STRINGIFY MY OBJECT SO I CAN SEND IT AS A AJAX REQUEST */
-        //data = JSON.stringify(data);
-        //console.log(data)
-
-        
-        
         /* THIS IS A POST REQUEST IT WILL SEND AND GET INFORMATION TO/FROM SERVER */
         xhr.open("POST", "/postfile", true);
 
-        /*IN ORDER TO SEND POST DATA I MUST SEND A FORM HEADER REQUEST */
-        //xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        
 
-        /*I USE THE DATA VARIABLE THAT I CREATED TO STORE THE ACTUAL DATA AND THEN SEND THE DATA USING THE DATA NAME I USE WITH THE SEND REQUEST.  A SEND REQUEST MUST HAVE A NAME THAT ATTACHES TO WHAT IS BEING SENT.*/
+        /* FOR THE FORMDATA I JUST SEND THE FORMDATA OBJECT NO STRINGIFY NEEDED. */
         xhr.send(formData);
       }
     </script>
