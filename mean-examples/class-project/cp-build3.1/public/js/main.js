@@ -45,7 +45,7 @@ main.processForm = function(){
 
 /* I WOULD PUT THIS ON ANOTHER JAVASCRIPT FILE SO IT COULD BE RE-USED FOR OTHER PAGES */
 main.formValidation = function(obj){
-    var i = 0, labels;
+    var i = 0, j = 0, labels;
 
     /* CLEAR ALL FORM ERRORS FROM A POSSIBLE PREVIOUS FAILED SUBMISSION */
     main.clearFormErrors();
@@ -53,9 +53,15 @@ main.formValidation = function(obj){
     labels = document.getElementsByTagName('label');
 
     while(i < labels.length){
-        if(labels[i].getAttribute('for') === obj[i].id && obj[i].status === 'error'){
-            labels[i].innerHTML += '<span> ' +  obj[i].msg + '</span>';
+        j = 0;
+        while(j < obj.length){
+        	if(labels[i].getAttribute('for') === obj[j].id && obj[j].status === 'error'){
+            	labels[i].innerHTML += '<span> ' +  obj[j].msg + '</span>';
+            	break;
+        	}
+        	j++	
         }
+        
         i++;  
     }
 }
