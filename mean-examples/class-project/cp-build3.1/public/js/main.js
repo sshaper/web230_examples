@@ -29,7 +29,10 @@ main.processForm = function(){
 	var obj = JSON.stringify(obj);
 	Ajax.sendRequest('/user/postTestForm', function(res){
 		var obj = JSON.parse(res.responseText);
-		console.log(obj)
+		
+		/* CLEAR ALL FORM ERRORS FROM A POSSIBLE PREVIOUS FAILED SUBMISSION */
+    	main.clearFormErrors();
+		
 		if(obj.masterstatus === 'success'){
 			/* DISPLAY SUCCESS MESSAGE */
 			document.getElementById('msg').innerHTML = 'Form data was valid';
@@ -46,9 +49,6 @@ main.processForm = function(){
 /* I WOULD PUT THIS ON ANOTHER JAVASCRIPT FILE SO IT COULD BE RE-USED FOR OTHER PAGES */
 main.formValidation = function(obj){
     var i = 0, j = 0, labels;
-
-    /* CLEAR ALL FORM ERRORS FROM A POSSIBLE PREVIOUS FAILED SUBMISSION */
-    main.clearFormErrors();
 
     labels = document.getElementsByTagName('label');
 
