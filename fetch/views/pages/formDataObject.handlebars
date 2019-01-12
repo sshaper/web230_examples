@@ -1,0 +1,34 @@
+<main class="container">
+<form id="addNameAge" enctype="multipart/form-data">
+<label>Full Name:<input type="text" name="fullName" class="form-control" ></label>
+<label>Age:<input type="text" name="age" class="form-control" ></label>
+<input type="submit" class="btn btn-primary" id="simplePostJsonBtn" value="Simple Post JSON">
+</form>
+
+<div id="result" style="margin: 20px 0 0 0"></div>
+
+</main>
+<script>
+"use strict"
+
+document.getElementById('addNameAge').addEventListener('submit', function(e){
+	let url = "/formDataObj", data = {}, form, formData;
+	
+	e.preventDefault();
+
+	form = document.forms['addNameAge'];
+	formData = new FormData(form);
+
+	fetch(url, {
+	  method: 'POST',
+	  body: formData,
+	}).then(response => response.json())
+	.then(json => {
+		let text = `My name is ${json.fullName} and my age is ${json.age}.`;
+		document.getElementById('result').innerHTML = text;
+	})
+	.catch(error => console.error('Error:', error));
+}, false)
+
+</script>
+</html>

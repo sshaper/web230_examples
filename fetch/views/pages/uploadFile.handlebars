@@ -1,0 +1,46 @@
+<main class="container">
+<form id="uploadFile" enctype="multipart/form-data">
+<label>File Name:<input type="text" name="fileName" class="form-control" value="test file"></label>
+<input type="file" name="selectedFile">
+<input style="margin: 10px 0 0 0; display: block" type="submit" class="btn btn-primary" id="uploadFileBtn" value="Upload File">
+</form>
+
+<div id="result" style="margin: 20px 0 0 0"></div>
+
+</main>
+<script>
+"use strict"
+
+document.getElementById('uploadFile').addEventListener('submit', function(e){
+	let url = "/uploadFile", data = {}, form, formData;
+	
+	e.preventDefault();
+
+	form = document.forms['uploadFile'];
+	formData = new FormData(form);
+
+	fetch(url, {
+	  method: 'POST',
+	  body: formData,
+	}).then(response => response.json())
+	.then(json => {
+		let output = `<p>The file name is: ${json.text.fileName}<p>
+		<p>The file properties are as follows:</p>
+		<ul>	
+			<li>Field Name: ${json.file.fieldname}</li>
+			<li>Original Name: ${json.file.originalname}</li>
+			<li>Encoding: ${json.file.encoding}</li>
+			<li>Mimetype: ${json.file.mimetype}</li>
+			<li>Destination: ${json.file.destination}</li>
+			<li>Filename (given by multer): ${json.file.filename}</li>
+			<li>Path: ${json.file.path}</li>
+			<li>Size: ${json.file.size}</li>
+		</ul>`;
+
+		document.getElementById("result").innerHTML = output;
+	})
+	.catch(error => console.error('Error:', error));
+}, false)
+
+</script>
+</html>

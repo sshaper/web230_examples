@@ -1,0 +1,20 @@
+<main class="container">
+<input type="button" class="btn btn-primary" id="simpleGetTextBtn" value="Simple Get Text">
+<div id="result" style="margin: 20px 0 0 0"></div>
+
+</main>
+<script>
+"use strict"
+
+document.getElementById('simpleGetTextBtn').addEventListener('click', function(){
+	const url = "/simpleGetText";
+
+	fetch(url)
+	//.then(response => console.log(response))
+	.then(response => response.text())
+	.then(text => document.getElementById('result').innerHTML = text)
+	.catch(error=>console.log(error))
+}, false)
+
+</script>
+</html>

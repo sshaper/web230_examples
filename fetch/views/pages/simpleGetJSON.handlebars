@@ -1,0 +1,24 @@
+<main class="container">
+<input type="button" class="btn btn-primary" id="simpleGetJsonBtn" value="Simple Get JSON">
+<div id="result" style="margin: 20px 0 0 0"></div>
+
+</main>
+<script>
+"use strict"
+
+document.getElementById('simpleGetJsonBtn').addEventListener('click', function(){
+	const url = "/simpleGetJson";
+
+	fetch(url)
+	.then(response => response.json())
+	.then(json => {
+		
+		let text = `My name is ${json.name} and my age is ${json.age}.`;
+		document.getElementById('result').innerHTML = text;
+		console.log(json);
+	})
+	.catch(error=>console.log(error))
+}, false)
+
+</script>
+</html>

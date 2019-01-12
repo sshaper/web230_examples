@@ -1,5 +1,5 @@
 # web230_examples
-These are the examples from my web230 class in JavaScript. The actual course notes explain what the examples do in more detail. To access the course you must be enrolled in the WEB230 class at Washtenaw Community College. These are the example files for my web230 class.
+These are the examples from my web230 class in JavaScript. To access the course you must be enrolled in the WEB230 class at Washtenaw Community College. These are the example files for my web230 class.
 
 ## Installing Modules
 In order for the class-project builds to work you must install the modules.  To do this just run the package.json file from the web230_examples folder "sudo npm install".
@@ -12,21 +12,4 @@ Make sure you visit the mvc page in the course notes and look at the table for t
 ## Example Files
 The examples are as follows:
 
-* bom - Examples of using the browser object model.
-* cookies - Examples of creating, updating, and deleting cookies.
-* event-delegation - Examples of using event-delegation.
-* event-listeners - Examples of using event-listeners.
-* geolocation - Examples of using HTML5 geolocation.
-* html5-drag-drop-examples - Title says what it is.
-* localstorage - Examples using localstorage.
-* mean-examples - Examples of using the MEAN stack. Except no angualer and Mongo was replaced with MySql.  Subfolders include:
-	* ajax - Examples using ajax in node.
-	* class-project - A series of examples that build a small web application in steps.
-	* node-sample-files - Various examples of using node.
-	* sockets - Examples using sockets and socket io
-* navigator - Examples using the navigator object.
-* time-functions - Examples using JavaScript time related functions.
-* websockets - Examples using JavaScript web sockets.
-* webworkers - Examples using JavaScript web workers.
-
-
+* fetch - Examples of using fetch api to upload information to the server. In order to use this example you must have node installed and you must install the modules. To do this just run the package.json file from the fetch folder "sudo npm install".  Also, make sure the fetch/public/uploads folder is public.  Go into the public folder and enter "sudo chmod 777 uploads"
