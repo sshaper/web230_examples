@@ -4,10 +4,6 @@ These are the examples from my web230 class in JavaScript. To access the course 
 ## Installing Modules
 In order for the class-project builds to work you must install the modules.  To do this just run the package.json file from the web230_examples folder "sudo npm install".
 
-You will have to also add the classProject database to MySQL.  Navigate to mean-examples/sqlfiles/ and enter mysql -u root -p < classProject.sql.  Enter your MySQL password.  File will be uploaded and database will be created.
-
-Make sure you visit the mvc page in the course notes and look at the table for the class project.  Read the descriptions for each project build as they will have more information specific to that project.
-
 
 ## Example Files
 The examples are as follows:
