@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>New Window</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<style type="text/css">
+		body{font: normal 75%/1.3 Verdana;}
+		#txtFromMainWin{margin-top: 20px;}
+		.borderColor{border: 3px solid #4eff2a; cursor: pointer;}
+		.borderNoColor{border: 3px solid white; cursor: pointer;}
+		input{margin: 5px;}
+		</style>
+	</head>
+	<body class="container">
+	<input id="closeBtn" class="btn btn-primary" type="button" value="Window Close" />
+	<input id="outerHeight" class="btn btn-primary" type="button" value="Outer Height" />
+	<input id="outerWidth" class="btn btn-primary" type="button" value="Outer Width" />
+	<input id="innerHeight" class="btn btn-primary" type="button" value="Inner Height" />
+	<input id="innerWidth" class="btn btn-primary" type="button" value="Inner Width" />
+	<input id="moveBy" class="btn btn-primary" type="button" value="Move By 20,20" />
+	<input id="moveTo" class="btn btn-primary" type="button" value="Move To 500,100" />
+	<input id="resizeBy" class="btn btn-primary" type="button" value="Resize By 20,20" />
+	<input id="resizeTo" class="btn btn-primary" type="button" value="Resize To 300,300" />
+	<input id="resizeTo1" class="btn btn-primary" type="button" value="Resize To 900,900" />
+	
+	
+	<div id="pics">
+	<img class="borderNoColor" src="images/canyon2a.jpg" width="102" height="76" alt="canyon 1" />
+	<img class="borderNoColor" src="images/canyon6a.jpg" width="102" height="76" alt="canyon 2" />
+	<img class="borderNoColor" src="images/canyon13.jpg" width="102" height="76" alt="canyon 3" />
+	<img class="borderNoColor" src="images/canyon15.jpg" width="102" height="76" alt="canyon 4" />
+	<img class="borderNoColor" src="images/canyon17.jpg" width="102" height="76" alt="canyon 5" />
+	</pics>
+	
+	
+	<script type="text/javascript">
+	'use strict';
+	document.getElementById('closeBtn').onclick = function(){window.close();}
+	document.getElementById('outerHeight').onclick = function(){alert(window.outerHeight);}
+	document.getElementById('outerWidth').onclick = function(){alert(window.outerWidth);}
+	document.getElementById('innerHeight').onclick = function(){alert(window.innerHeight);}
+	document.getElementById('innerWidth').onclick = function(){alert(window.innerWidth);}
+	document.getElementById('moveBy').onclick = function(){window.moveBy(20,20);}
+	document.getElementById('moveTo').onclick = function(){window.moveTo(500,100);}
+	document.getElementById('resizeBy').onclick = function(){window.resizeBy(20,20);}
+	document.getElementById('resizeTo').onclick = function(){window.resizeTo(300,300);}
+	document.getElementById('resizeTo1').onclick = function(){window.resizeTo(900,900);}
+	
+	document.getElementById('pics').onclick = function(evt){
+		var currentNode = evt.target || evt.srcElement;
+		var img = '<img src="'+currentNode.src+'" alt="canyon" />';
+		window.opener.document.getElementById('pic').innerHTML = img;
+	}
+	
+	document.getElementById('pics').onmouseover = function(evt){
+		var currentNode = evt.target || evt.srcElement;
+		if (currentNode.nodeName.toLowerCase()==="img"){
+			currentNode.className = "borderColor";
+		}
+	}	
+		
+	document.getElementById('pics').onmouseout = function(evt){
+		var currentNode = evt.target || evt.srcElement;
+		if (currentNode.nodeName.toLowerCase()==="img"){
+			currentNode.className = "borderNoColor";
+
+		}	
+
+
+	}
+
+	</script>
+	</body>
+</html>

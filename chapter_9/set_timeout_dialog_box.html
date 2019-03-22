@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Set Timeout Dialog Box</title>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+
+    	#dialogBox{
+    		position: absolute;
+    		border: 1px solid blue;
+    		height: 200px;
+    		width: 200px;
+    		box-shadow: 5px 10px 3px 0px rgba(0, 0, 0, .5);
+    		display: none;
+    	}
+    	input {
+    		margin: 5px;
+    	}
+
+    </style>
+	</head>
+	<body class="container" style="padding: 20px 0; position: relative;">
+		<input type="button" id="dialogBtn" class="btn btn-primary" value="show dialog">
+		<div id="dialogBox">Hello Class!!!</div>
+		<script>
+			'use strict';
+			let dialogBox = document.getElementById('dialogBox');
+			document.getElementById('dialogBtn').addEventListener('click', showDialog);
+
+			function showDialog(){
+				//console.log(dialogBox);
+				dialogBox.style.display = "block";
+				setTimeout(function(){dialogBox.style.display = "none"}, 3000);
+			}
+		</script>
+	</body>
+</html>

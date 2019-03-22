@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		'use strict';
+		function squareRoot(number) {
+			
+			if (number < 0) {
+				//I HAVE A ERROR MESSAGE BUT IT IS NOT REALLY NEEDED AS I HAVE A CATCH METHOD
+				throw new RangeError('You can\'t find the square root of negative numbers');
+			}
+
+			return Math.sqrt(number);
+		};
+
+		function imaginarySquareRoot(number) {
+			
+			let answer;
+			//HERE WE TRY TO GET THE SQ ROOT USING SQ ROOT FUNCTION WE CREATED
+			try {
+				answer = String(squareRoot(number));
+			} 
+			//IF THERE IS AN ERROR GENERATED WE CATCH IT HERE AND CHANGE THE ANSWER
+			catch(error) {
+				answer = squareRoot(-number)+"i";
+			} 
+			//FINALLY WILL RUN REGARDLESS OF WHETHER WE HAVE AN ERROR MESSAGE OR NOT.
+			finally {
+				return `+ or - ${answer}`;
+			}
+		};
+
+		console.log(imaginarySquareRoot(-49));
+
+	</script>
+</body>
+</html>

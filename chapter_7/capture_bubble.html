@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Capture Bubble</title>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+		div, p, span {
+			border: 1px solid blue;
+			padding: 30px;
+			margin: 0;
+		}
+		div{ width: 200px; }
+		span {display: block;}
+
+	</style>
+</head>
+<body class="container">
+	<div>DIV
+		<p>P
+			<span>SPAN</span>
+		</p>
+	</div>
+	<script>
+		'use strict';
+		/* RUN THIS CODE AND CLICK ON THE SPAN YOU WILL SEE IT LISTS IN THE CONSOLE. AS SPAN P DIV (BUBBLE), NOW COMMENT OUT THE CODE AND UNCOMMENT THE OTHER, CLICK THE SPAN YOU WILL GET DIV P SPAN (CAPTURE)  */
+
+		document.getElementsByTagName('div')[0].addEventListener('click', function(){console.log(this.firstChild.nodeValue)});
+		document.getElementsByTagName('p')[0].addEventListener('click', function(){console.log(this.firstChild.nodeValue)});
+		document.getElementsByTagName('span')[0].addEventListener('click', function(){console.log(this.firstChild.nodeValue)});
+	
+	</script>
+</body>
+</html>

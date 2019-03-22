@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Mouseover Mouseout</title>
+
+  </head>
+  <body class="container" style="padding: 30px 0">
+    <ul style="font-size: 20px">
+      <li>List 1</li>
+      <li>List 2</li>
+      <li>List 3</li>
+      <li>List 4</li>
+      <li>List 5</li>
+    </ul>
+
+    <script>
+      'use strict';
+      let li = document.getElementsByTagName('li'), i = 0;
+
+
+      while(i < li.length){
+        console.log(li[i]);
+        li[i].addEventListener('mouseover', function(e){e.target.style.color = 'red'});
+        li[i].addEventListener('mouseout', function(e){e.target.style.color = 'black'});
+        i++;
+      }
+    </script>
+  </body>
+</html>

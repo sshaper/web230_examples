@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Key Events</title>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="container">
+	<p>If you enter text into the keyup box and enter more than 5 characters the last character entered get removed</p>
+
+	<p>If you enter text into the keydown box and enter more that 5 characters the sixth character become the last one pressed</p>
+	
+	<label>Keyup<input type="text" class="form-control" id="keyup"></label>
+	<label>Keydown<input type="text" class="form-control" id="keydown"></label>
+
+	<script>
+		'use strict';
+		document.getElementById('keyup').addEventListener('keyup', function(){
+			if(this.value.length > 5){
+				this.value = this.value.substring(0,5);
+			}
+		});
+
+		document.getElementById('keydown').addEventListener('keydown', function(){
+			if(this.value.length > 5){
+				this.value = this.value.substring(0,5);
+			}
+		});
+
+
+
+	</script>
+</body>
+</html>

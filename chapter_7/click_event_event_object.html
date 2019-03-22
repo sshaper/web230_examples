@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Click Event Object</title>
+
+  </head>
+  <body class="container" style="padding: 30px 0">
+    <button class="btn btn-primary">Click Me</button>
+    <p id="output"></p>
+
+    <script>
+      'use strict';
+      document.getElementsByTagName('button')[0].addEventListener('click', doSomething);
+
+      function doSomething(event){
+        let output = `The event type is: ${event.type}<br>`;
+        output += `The event target is: ${event.target}<br>`;
+        output += `The event target nodeName is: ${event.target.nodeName}<br>`;
+        output += `The event target class is : ${event.target.className}<br>`;
+        output += `The event target text is : ${event.target.firstChild.nodeValue}<br>`;
+
+        document.getElementById('output').innerHTML = output;
+      }
+    </script>
+  </body>
+</html>

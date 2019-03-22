@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Event Delegation</title>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="container">
+	<table class="table table-bordered">
+		<tr>
+			<td>Cell 1</td>
+			<td>Cell 2</td>
+			<td><input type="button" class="btn btn-primary" value="update" id="u1"></td>
+			<td><input type="button" class="btn btn-danger" value="delete" id="d1"></td>
+		</tr>
+
+		<tr>
+			<td>Cell 1</td>
+			<td>Cell 2</td>
+			<td><input type="button" class="btn btn-primary" value="update" id="u2"></td>
+			<td><input type="button" class="btn btn-danger" value="delete" id="d2"></td>
+		</tr>
+
+		<tr>
+			<td>Cell 1</td>
+			<td>Cell 2</td>
+			<td><input type="button" class="btn btn-primary" value="update" id="u3"></td>
+			<td><input type="button" class="btn btn-danger" value="delete" id="d3"></td>
+		</tr>
+
+	</table>
+
+	<script>
+		'use strict';
+		document.getElementsByTagName('table')[0].addEventListener('click',function(e){
+				if(e.target.value == 'update' || e.target.value == 'delete'){
+					console.log(e.target.id);
+				}
+
+
+		});
+	</script>
+</body>
+</html>

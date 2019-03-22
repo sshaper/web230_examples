@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Set Timeout Recursive</title>
+
+  </head>
+  <body class="container" style="padding: 30px 0">
+    <p>The iteration number is: <span id="output"></span></p>
+
+    <script>
+      'use strict';
+      let i = 1;
+      const number = 5;
+
+      function iterate(i){
+      	setTimeout(function(){document.getElementById('output').innerHTML = i
+      		if(i < number){
+      			i++;
+      			iterate(i);
+      		}
+      	}, 1000);
+      	
+      }
+
+      iterate(i);
+            
+    </script>
+  </body>
+</html>

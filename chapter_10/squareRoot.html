@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function squareRoot(number) {
+			'use strict';
+			if (number < 0) {
+				throw new RangeError('You can\'t find the square root of negative numbers')
+			}
+
+			return Math.sqrt(number);
+		};
+
+		console.log(squareRoot(-121));
+	</script>
+</body>
+</html>
