@@ -26,9 +26,15 @@
 		'use strict';
 		/* RUN THIS CODE AND CLICK ON THE SPAN YOU WILL SEE IT LISTS IN THE CONSOLE. AS SPAN P DIV (BUBBLE), NOW COMMENT OUT THE CODE AND UNCOMMENT THE OTHER, CLICK THE SPAN YOU WILL GET DIV P SPAN (CAPTURE)  */
 
+		
 		document.getElementsByTagName('div')[0].addEventListener('click', function(){console.log(this.firstChild.nodeValue)});
 		document.getElementsByTagName('p')[0].addEventListener('click', function(){console.log(this.firstChild.nodeValue)});
 		document.getElementsByTagName('span')[0].addEventListener('click', function(){console.log(this.firstChild.nodeValue)});
+
+
+		/*document.getElementsByTagName('div')[0].addEventListener('click', function(){console.log(this.firstChild.nodeValue)},true);
+		document.getElementsByTagName('p')[0].addEventListener('click', function(){console.log(this.firstChild.nodeValue)},true);
+		document.getElementsByTagName('span')[0].addEventListener('click', function(){console.log(this.firstChild.nodeValue)},true);*/
 	
 	</script>
 </body>

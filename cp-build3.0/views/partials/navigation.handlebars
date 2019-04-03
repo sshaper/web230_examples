@@ -1,0 +1,17 @@
+<nav>
+  {{#if nav}}
+	<ul>
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/names">Name List</a></li>
+	  <li><a href="/diff">Different Nav</a></li>
+	  </ul>
+  {{else if diff}}
+	<ul>
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/names">Name List</a></li>
+	  <li><a href="#">Blank Nav</a></li>
+	  <li><a href="#">Blank Nav</a></li>
+	  <li><a href="#">Blank Nav</a></li>
+	</ul>
+  {{/if}}
+</nav>
