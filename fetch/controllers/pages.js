@@ -17,7 +17,7 @@ module.exports = {
 		res.render('pages/simplePostJSON',{title: "simple post JSON page", nav: true, heading: "Simple Post JSON Page"});
 	},
 	formDataObjectPage(req, res){
-		res.render('pages/formDataObject',{title: "form data object page", nav: true, heading: "From Data Object Page"});
+		res.render('pages/formDataObject',{title: "form data object page", nav: true, heading: "Form Data Object Page"});
 	},
 	uploadFilePage(req, res){
 		res.render('pages/uploadFile',{title: "upload file page", nav: true, heading: "Upload File Page"});
